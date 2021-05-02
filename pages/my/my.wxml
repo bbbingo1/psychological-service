@@ -1,0 +1,111 @@
+<import src="../../template/login-tip/login-tip.wxml" />
+<view class='container'>
+  <!-- 用户信息 -->
+  <view class='userbox' style='background: -webkit-linear-gradient(top, rgba({{bgRed}},{{bgGreen}},{{bgBlue}}, 1), rgba({{bgRed}},{{bgGreen}},{{bgBlue}}, 0.3))'>
+    <!-- 头像框+用户名 -->
+    <view class='userinfo {{show!=0?"fadeIn":""}}'>
+      <view>
+        <image class="avatar" src="{{userInfo.avatarUrl}}" mode="scaleToFill"></image>
+      </view>
+      <view class='userinfo-text'>
+        <text class="username">{{userInfo.nickName}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='my_box {{show!=0?"sticky":""}}' id='my_box1'>
+      <template is="logintip" bind:myEvent="onGotUserInfo" wx:if="{{!userInfo.avatarUrl}}"></template>
+    <view class='my_box_container' id='my_box1_container'  wx:if="{{userInfo.avatarUrl}}">
+      <view class="my_box__item">
+        全部预约
+      </view>
+      <view class="my_box__item">进行中
+      </view>
+      <view class="my_box__item">已完成
+      </view>
+    </view>
+  </view>
+  <view class='my_box {{show!=0?"sticky":""}}' id='my_box2'>
+    <view class='my_box_title'>我的记录
+    </view>
+    <view class='my_box_container' id='my_box2_container'>
+      <view class="my_box__item">
+        <view hover-class="none" bindtap='getOrder' data-type="0" class="a">
+          <image class="icon" src="/images/default_icon.png" background-size="cover"></image>
+          <view class="txt">预约记录</view>
+        </view>
+      </view>
+      <view class="my_box__item">
+        <view hover-class="none" bindtap='getOrder' data-type="1" class="a">
+          <image class="icon" src="/images/default_icon.png" background-size="cover"></image>
+          <view class="txt">测试记录</view>
+        </view>
+      </view>
+      <view class="my_box__item">
+        <view hover-class="none" bindtap='getOrder' data-type="2" class="a">
+          <image class="icon" src="/images/default_icon.png" background-size="cover"></image>
+          <view class="txt">留言记录</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='my_box {{show!=0?"sticky":""}}' id='my_box3'>
+    <view class='my_box_title'>友情推广
+    </view>
+    <view class='my_box_container' id='my_box3_container'>
+      <view class="my_box__item">
+        <navigator hover-class="none" url="" class="a">
+          <image class="icon" src="/images/default2.png" background-size="cover"></image>
+          <view class="txt">梨颜理财</view>
+        </navigator>
+      </view>
+      <view class="my_box__item">
+        <navigator hover-class="none" url="" class="a">
+          <image class="icon" src="/images/default6.png" background-size="cover"></image>
+          <view class="txt">新冬方</view>
+        </navigator>
+      </view>
+      <view class="my_box__item">
+        <navigator hover-class="none" url="" class="a">
+          <image class="icon" src="/images/default26.png" title="挖掘技术哪家强" background-size="cover"></image>
+          <view class="txt">挖掘机</view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <view class='my_box {{show!=0?"sticky":""}}' id='my_box4'>
+    <view class='my_box_title'>我的服务
+    </view>
+    <view class='my_box_container' id='my_box4_container'>
+      <!-- <view class="my_box__item">
+        <navigator hover-class="none" url="" class="a">
+          <image class="icon" src="/images/default_icon.png" background-size="cover"></image>
+          <view class="txt">我的地址</view>
+        </navigator>
+      </view> -->
+      <view class="my_box__item">
+        <navigator hover-class="none" url="" class="a">
+          <image class="icon" src="/images/default_icon.png" background-size="cover"></image>
+          <view class="txt">常见问题</view>
+        </navigator>
+      </view>
+      <view class="my_box__item">
+        <navigator hover-class="none" url="" class="a">
+          <image class="icon" src="/images/default_icon.png" background-size="cover"></image>
+          <view class="txt">电话客服</view>
+        </navigator>
+      </view>
+      <view class="my_box__item">
+        <navigator hover-class="none" url="" class="a">
+          <image class="icon" src="/images/default_icon.png" background-size="cover"></image>
+          <view class="txt">投诉建议</view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <!-- 应用信息：版本号、联系作者 -->
+  <view class='about'>
+    <view class="version" style='margin-top:10rpx;font-size:18rpx;'>Copyright © 2021 {{copyright}}</view>
+    <view class='version' style='height:20rpx;line-height:20rpx;font-size:16rpx;font-style: oblique;'>Powered by {{copyright}} {{version}}</view>
+    <view style="height:12rpx;width:100%;"></view>
+  </view>
+</view>

@@ -1,0 +1,14 @@
+@import "../../colorui/main.wxss";
+@import "../../colorui/icon.wxss";
+
+.into-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.into-test {
+  background-color: #0bddb7e5 !important;
+  padding: 20px 50px !important;
+}

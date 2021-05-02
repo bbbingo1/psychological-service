@@ -1,0 +1,6 @@
+@import "../../colorui/main.wxss";
+@import "../../colorui/icon.wxss";
+
+.submit-button {
+  margin: 5px 20px !important;
+}

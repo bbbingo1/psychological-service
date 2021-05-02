@@ -1,0 +1,6 @@
+<!--轮播图开始-->
+<swiper></swiper>
+<!--轮播图结束-->
+<view class="into-button">
+  <button class="cu-btn bg-grey lg into-test" bindtap="getTestForm">进入测试</button>
+</view>

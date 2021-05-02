@@ -1,0 +1,44 @@
+<!-- pages/order-list/index.wxml -->
+<view>
+  <scroll-view class="tab-h" scroll-left="{{scrollLeft}}">
+    <view class="tab-item {{index == currentTab? ' active ' :' '}}" wx:for-items="{{statusType}}" bindtap="swichNav" wx:key="{{index}}" data-index="{{index}}">
+      {{item}}
+    </view>
+  </scroll-view>
+  <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
+    <swiper-item wx:for="{{[0,1,2]}}">
+      <!-- <view class="header" hidden="{{hideHeader}}">
+        <view>下拉刷新中……</view>
+        <view>{{refreshTime}}</view>
+      </view> -->
+      <scroll-view scroll-y="true" class="scoll-h" bindscrolltolower="loadMore" lower-threshold="{{lowerThreshold}}">
+        <!-- 无记录情况 -->
+        <view class="no-order" wx:if="{{!orderList[index].length}}">
+          <image src="/images/no-order.png" class="no-order-img"></image>
+          <view class="text">暂无记录</view>
+        </view>
+        <!-- 有记录情况 -->
+        <view wx:if="{{orderList[index].length}}">
+          <block wx:for="{{orderList[index]}}" wx:key="{{index}}">
+            <view class="item-ans" data-id="{{item.goods_id}}" bindtap='getOrder'>
+              <view class="avatar">
+                <image class="img" src="{{'https://liyan6987.cn/static/'+item.picture[0]}}" mode="scaleToFill"></image>
+              </view>
+              <view class="expertInfo">
+                <view class="name">{{item.name}}</view>
+                <view class="price">￥{{item.price}}</view>
+                <view class="poster">{{item.poster.name}}，{{item.poster.signature}}</view>
+              </view>
+              <navigator catchtap="tapChat" url="" class="askBtn">问TA</navigator>
+            </view>
+          </block>
+        </view>
+        <view class='swiper-bottom'></view>
+        <view class="bottom" hidden="{{hideBottom}}">
+          <view>{{loadMoreData}}</view>
+          <!-- <view>{{refreshTime}}</view> -->
+        </view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+</view>

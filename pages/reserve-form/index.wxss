@@ -1,0 +1,38 @@
+@import "../../colorui/main.wxss";
+@import "../../colorui/icon.wxss";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.cu-form-group {
+  margin: 20px 45px 15px !important;
+  border-radius: 5%;
+}
+
+.submit-button {
+  margin: 5px 120px !important;
+}
+
+.teacher-info {
+  background-color: var(--white);
+  padding: 5rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+  min-height: 100rpx;
+  margin: 25px 45px 20px;
+  border-radius: 2%;
+}
+
+.content {
+  display: flex;
+  margin: 10px 5px;
+}
+
+.content view {
+  margin-right: 10px;
+}
+
+.content text {}
