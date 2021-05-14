@@ -10,15 +10,6 @@ Page({
 
   //跳转
   getTestForm: function(e) {
-    // let status = checkLogin();
-    // if (!status) {
-    //   wx.navigateTo({
-    //     url: '/pages/test-form/index',
-    //     success: function(res) {},
-    //     fail: function(res) {},
-    //     complete: function(res) {},
-    //   })
-    // } else {
     wx.navigateTo({
       url: '/pages/test-form/index',
     })

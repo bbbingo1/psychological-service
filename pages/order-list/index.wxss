@@ -1,6 +1,7 @@
 /* pages/order-list/index.wxss */
 
-.header, .bottom {
+.header,
+.bottom {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -130,8 +131,22 @@
   margin-bottom: 4rpx;
 }
 
-.expertInfo .price {
+.expertInfo .blue {
+  color: rgb(0, 32, 255);
+}
+
+.expertInfo .red {
   color: rgb(226, 57, 65);
+}
+
+.expertInfo .reply {
+  color: rgb(226, 57, 65);
+  margin-bottom: 2rpx;
+}
+
+.expertInfo .message {
+  color: rgb(0, 32, 255);
+  margin-bottom: 2rpx;
 }
 
 .askBtn {

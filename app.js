@@ -1,4 +1,4 @@
-1//app.js
+1 //app.js
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -17,28 +17,48 @@ App({
         //登录请求回来之后,读取res的header的cookie
         //这里的sessionid随便写的,就是个唯一标识
         let header = {
-          'content-type': 'application/x-www-form-urlencoded',
+          'content-type': 'application/json',
           // 'cookie': wx.getStorageSync("sessionid")//读取cookie
         };
         wx.request({
-          url: 'https://liyan6987.cn/auth/code_to_info',
-          data: { code: code },
+          url: 'http://1.117.110.210:80/login/',
+          data: {
+            code: code
+          },
           method: 'post',
           header: header,
           success(res) {
-            // console.log(res)
-            if (res.data.status == true) {
-              wx.setStorageSync("sessionid", res.header["Set-Cookie"])
-              that.globalData.user = res.data.user
-              // console.log(that.globalData.user)
-              wx.setStorageSync('openid', res.data.user.openid)
-            }
-            else if (res.data.status == false) {
+            that.globalData.openid = res.data.data.openid;
+            wx.setStorageSync('openid', res.data.data.openid)
+            if (res.statusCode === 200) {
+              // 已登录且绑定了学生个人信息 TODO：获取学生个人信息并更新数据
+              const {
+                name,
+                stu_id: stuId,
+                stu_class: stuClass,
+                grade,
+                college,
+                phone_number: phoneNumber,
+                user_id: userId
+              } = res.data.data
+              const user = {
+                userId,
+                name,
+                stuId,
+                stuClass,
+                grade,
+                college,
+                phoneNumber,
+              }
+              wx.setStorageSync('user', user)
+
+            } else if (res.statusCode === 403) {
+              // 已登录 TODO但未绑定个人信息，TODO：跳转到更新学生个人信息页
               wx.navigateTo({
-                url: '/pages/login/index',
-                success: function (res) { },
-                fail: function (res) { },
-                complete: function (res) { },
+                url: '/pages/user-info/index',
+                success: function (res) {},
+                fail: function (res) {},
+                complete: function (res) {},
               })
             }
           }
@@ -66,7 +86,7 @@ App({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
-              // console.log(res)
+              console.log(res)
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
 
@@ -83,7 +103,7 @@ App({
 
   },
   globalData: {
-    currentRouter:null,
+    currentRouter: null,
     userInfo: null,
     user: null,
     studentId: null,

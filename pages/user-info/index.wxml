@@ -1,0 +1,39 @@
+<!--pages/login/index.wxml-->
+<view class='container'>
+  <view class="login-form">
+    <view class='login-logo'>
+      <image src='../../images/login.png'></image>
+    </view>
+    <view class="inputform">
+      <form method="POST">
+        <view class="info-input">
+          <input type='text' placeholder="姓名" maxlength="20" data-obj="name" bindinput='adInputChange'
+            value="{{name}}" />
+        </view>
+        <view class="info-input">
+          <input type='number' placeholder="学号" maxlength="20" data-obj="stuId" bindinput='adInputChange'
+            value="{{stuId}}" />
+        </view>
+        <view class="info-input">
+          <input type='text' placeholder="班级" data-obj="stuClass" bindinput='adInputChange' maxlength="20"
+            value="{{stuClass}}" />
+        </view>
+        <view class="info-input">
+          <input type='text' placeholder="年级" data-obj="grade" bindinput='adInputChange' maxlength="20"
+            value="{{grade}}" />
+        </view>
+        <view class="info-input">
+          <input type='text' placeholder="学院" data-obj="college" bindinput='adInputChange' maxlength="20"
+            value="{{college}}" />
+        </view>
+        <view class="info-input">
+          <input type='number' placeholder="电话号码" data-obj="phoneNumber" bindinput='adInputChange' maxlength="20"
+            value="{{phoneNumber}}" />
+        </view>
+      </form>
+    </view>
+    <view class="submitform">
+      <button id="button" bindtap='signIn'>更新信息</button>
+    </view>
+  </view>
+</view>

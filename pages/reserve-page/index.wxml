@@ -6,10 +6,10 @@
 </view>
 <view class="cu-list menu sm-border card-menu margin-top">
   <block wx:for='{{dataList}}' wx:key='list' wx:for-item="item">
-    <view class="cu-item arrow" data-id="{{item.goods_id}}" bindtap="getForm">
+    <view class="cu-item arrow" data-item="{{item}}" data-id="{{item.teacher_id}}" bindtap="getForm">
         <view class="content">
           <text class="cuIcon-peoplefill text-grey"></text>
-          <text class="text-grey">老师</text>
+          <text class="text-grey">{{item.name}}</text>
         </view>
       <view class='clear'></view>
     </view>

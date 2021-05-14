@@ -1,7 +1,4 @@
 // pages/goods-detail/index.js
-import {
-  addGoodsRelation
-} from '../../api/http.js'
 
 Page({
 
@@ -45,7 +42,7 @@ Page({
     var that = this;
     that.data.goods_id = options.goods_id;
     wx.request({ //发送请求
-      url: 'https://liyan6987.cn/goods/get_goods_detail',
+      url: 'http://1.117.110.210:80/goods/get_goods_detail',
       type: 'get',
       data: {
         goods_id: that.data.goods_id
@@ -106,7 +103,7 @@ Page({
         }
         that.data.detail.imgs = [];
         Object.keys(res.data.picture).forEach(function(key) {
-          that.data.detail.imgs.push("https://liyan6987.cn/static/" + res.data.picture[key]);
+          that.data.detail.imgs.push("http://1.117.110.210:80/static/" + res.data.picture[key]);
         })
         that.data.detail.describe = res.data.describe;
         that.data.detail.title = res.data.name;
@@ -142,21 +139,6 @@ Page({
     let that = this
     switch (e.currentTarget.dataset.target) {
       case 0:
-        addGoodsRelation(that.data.goods_id, 3).then((res) => {
-          that.setData({
-            if_want: {
-              text: "移除收藏", //or "移除收藏" or“编辑发布”
-              style: "wanted" //or "wanted" or “editItem”
-            },
-            relation_id: 3
-          });
-          wx.showToast({
-            title: "收藏成功",
-            icon: 'success',
-            duration: 1000,
-            success: () => {}
-          })
-        }).catch(err=>{console.log(err)})
         break;
       case 2:
         // wx.navigateTo({

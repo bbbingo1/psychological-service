@@ -151,10 +151,23 @@ page {
   color: rgb(29, 29, 29);
 }
 
-.my_box__item {
+.my_box__item_4 {
   cursor: pointer;
   padding-top: 6%;
   width: 25%;
+  text-align: center;
+}
+
+.my_box__item_4 view {
+  margin-bottom: 4px;
+  font-size: 28rpx;
+  color: rgb(29, 29, 29);
+}
+
+.my_box__item {
+  cursor: pointer;
+  padding-top: 6%;
+  width: 33%;
   text-align: center;
 }
 

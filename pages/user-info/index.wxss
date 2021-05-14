@@ -21,14 +21,12 @@ page {
   width: 480rpx;
 }
 
-.account,
-.password {
+.info-input {
   margin: 20rpx 0;
   width: 100%;
 }
 
-#number,
-#secret {
+.info-input input {
   background: white;
   padding: 10rpx 15rpx;
   box-sizing: border-box;

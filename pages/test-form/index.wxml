@@ -1,119 +1,27 @@
 <form>
-	<view class="cu-form-group margin-top">
-		<view class="title">邮件</view>
-		<input placeholder="两字短标题"></input>
-	</view>
-	<view class="cu-form-group">
-		<view class="title">输入框</view>
-		<input placeholder="三字标题"></input>
-	</view>
-	<view class="cu-form-group">
-		<view class="title">收货地址</view>
-		<input placeholder="统一标题的宽度"></input>
-	</view>
-	<view class="cu-form-group">
-		<view class="title">收货地址</view>
-		<input placeholder="输入框带个图标"></input>
-		<text class="cuIcon-locationfill text-orange"></text>
-	</view>
-	<view class="cu-form-group">
-		<view class="title">验证码</view>
-		<input placeholder="输入框带个按钮"></input>
-		<button class="cu-btn bg-green shadow">验证码</button>
-	</view>
-	<view class="cu-form-group">
-		<view class="title">手机号码</view>
-		<input placeholder="输入框带标签"></input>
-		<view class="cu-capsule radius">
-			<view class="cu-tag bg-blue">
-				+86
-			</view>
-			<view class="cu-tag line-blue">
-				中国大陆
-			</view>
+	<view class="question-item cu-form-group margin-top" wx:for="{{questionList}}" wx:key="idx" wx:for-index="idx"
+		wx:for-item="item">
+		<view class="question-title">{{'题目'  + (idx + 1)  + '：' + item.question}}
 		</view>
-	</view>
-	<view class="cu-form-group margin-top">
-		<view class="title">普通选择</view>
-		<picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
-			<view class="picker">
-				{{index?picker[index]:'禁止换行，超出容器部分会以 ... 方式截断'}}
+		<radio-group class="block" bindchange="radioChange" data-idx="{{idx}}">
+			<view class="cu-form-group" wx:for="{{item.result}}" wx:key="index" wx:for-index="index"
+				wx:for-item="result">
+				<view class="title">{{result[0] + '、' + result[1]}}</view>
+				<radio class="cyan" value="{{result[0]}}"></radio>
 			</view>
-		</picker>
-	</view>
-	<view class="cu-form-group">
-		<view class="title">多列选择</view>
-		<picker mode="multiSelector" bindchange="MultiChange" bindcolumnchange="MultiColumnChange" value="{{multiIndex}}"
-		 range="{{multiArray}}">
-			<view class="picker">
-				{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}，{{multiArray[2][multiIndex[2]]}}
+			<!-- <view class="cu-form-group">
+				<view class="title">B、定义样式单选操作定义样式单选操作</view>
+				<radio class="cyan" value="2"></radio>
 			</view>
-		</picker>
-	</view>
-	<view class="cu-form-group">
-		<view class="title">时间选择</view>
-		<picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="TimeChange">
-			<view class="picker">
-				{{time}}
+			<view class="cu-form-group">
+				<view class="title">C、定义颜色定义样式单选操作</view>
+				<radio class="cyan" value="3"></radio>
 			</view>
-		</picker>
+			<view class="cu-form-group">
+				<view class="title">D、单选操作定义样式单选操作</view>
+				<radio class="cyan" value="4"></radio>
+			</view> -->
+		</radio-group>
 	</view>
-	<view class="cu-form-group">
-		<view class="title">日期选择</view>
-		<picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange">
-			<view class="picker">
-				{{date}}
-			</view>
-		</picker>
-	</view>
-	<view class="cu-form-group">
-		<view class="title">地址选择</view>
-		<picker mode="region" bindchange="RegionChange" value="{{region}}" custom-item="{{customItem}}">
-			<view class="picker">
-				{{region[0]}}，{{region[1]}}，{{region[2]}}
-			</view>
-		</picker>
-	</view>
-	<view class="cu-form-group margin-top">
-		<view class="title">开关选择</view>
-		<switch></switch>
-	</view>
-	<view class="cu-form-group">
-		<view class="title">定义颜色</view>
-		<switch class="red sm" checked></switch>
-	</view>
-	<view class="cu-form-group">
-		<view class="title">性别</view>
-		<switch class="switch-sex" checked></switch>
-	</view>
-	<view class="cu-form-group">
-		<view class="title">方形开关</view>
-		<switch class="orange radius sm" checked></switch>
-	</view>
-	<radio-group class="block">
-		<view class="cu-form-group margin-top">
-			<view class="title">单选操作(radio)</view>
-			<radio checked></radio>
-		</view>
-		<view class="cu-form-group">
-			<view class="title">定义样式</view>
-			<radio class="radio"></radio>
-		</view>
-		<view class="cu-form-group">
-			<view class="title">定义颜色</view>
-			<view>
-				<radio class="blue radio"></radio>
-				<radio class="red margin-left-sm"></radio>
-			</view>
-		</view>
-	</radio-group>
-	<view class="cu-form-group margin-top">
-		<view class="title">复选选操作(checkbox)</view>
-		<checkbox></checkbox>
-	</view>
-	<view class="cu-form-group align-start">
-		<view class="title">文本框</view>
-		<textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaBInput" placeholder="多行文本输入框"></textarea>
-	</view>
-	<button class="submit-button cu-btn block bg-blue margin-tb-sm lg">提交</button>
+	<button class="submit-button cu-btn block bg-cyan margin-top margin-tb-sm lg" bindtap='submit'>提交</button>
 </form>

@@ -1,43 +1,67 @@
 <!-- pages/order-list/index.wxml -->
 <view>
   <scroll-view class="tab-h" scroll-left="{{scrollLeft}}">
-    <view class="tab-item {{index == currentTab? ' active ' :' '}}" wx:for-items="{{statusType}}" bindtap="swichNav" wx:key="{{index}}" data-index="{{index}}">
+    <view class="tab-item {{index == currentTab? ' active ' :' '}}" wx:for-items="{{statusType}}" bindtap="swichNav"
+      wx:key="index" data-index="{{index}}">
       {{item}}
     </view>
   </scroll-view>
-  <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
-    <swiper-item wx:for="{{[0,1,2]}}">
-      <!-- <view class="header" hidden="{{hideHeader}}">
-        <view>下拉刷新中……</view>
-        <view>{{refreshTime}}</view>
-      </view> -->
+
+  <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
+    style="height:{{winHeight}}rpx">
+    <swiper-item wx:for="{{[0,1,2]}}" wx:key="index">
+
       <scroll-view scroll-y="true" class="scoll-h" bindscrolltolower="loadMore" lower-threshold="{{lowerThreshold}}">
         <!-- 无记录情况 -->
         <view class="no-order" wx:if="{{!orderList[index].length}}">
           <image src="/images/no-order.png" class="no-order-img"></image>
           <view class="text">暂无记录</view>
         </view>
+
         <!-- 有记录情况 -->
         <view wx:if="{{orderList[index].length}}">
-          <block wx:for="{{orderList[index]}}" wx:key="{{index}}">
-            <view class="item-ans" data-id="{{item.goods_id}}" bindtap='getOrder'>
-              <view class="avatar">
-                <image class="img" src="{{'https://liyan6987.cn/static/'+item.picture[0]}}" mode="scaleToFill"></image>
+          <!-- 预约记录 -->
+          <view wx:if="{{index===0}}">
+            <block wx:for="{{orderList[0]}}" wx:key="{{item.reserve_id}}">
+              <view class="item-ans" data-id="{{item.reserve_id}}">
+                <view class="expertInfo">
+                  <view class="name">老师：{{item.teacher_name}}</view>
+                  <view class="{{item.reserve_status === 1 ? 'blue' : item.reserve_status === 2 ? 'red' : ''}}">
+                    预约状态：{{item.status}}</view>
+                  <view>地点：{{item.room}}</view>
+                  <view>咨询方向：{{item.direction}}</view>
+                  <view class="date">预约时间：{{item.duty_time}}</view>
+                </view>
               </view>
-              <view class="expertInfo">
-                <view class="name">{{item.name}}</view>
-                <view class="price">￥{{item.price}}</view>
-                <view class="poster">{{item.poster.name}}，{{item.poster.signature}}</view>
+            </block>
+          </view>
+          <!-- 测试记录 -->
+          <view wx:if="{{index===1}}">
+            <block wx:for="{{orderList[1]}}" wx:key="{{item.testing_id}}">
+              <view class="item-ans" data-id="{{item.testing_id}}">
+                <view class="expertInfo">
+                  <view class="name">分数：{{item.score}}</view>
+                  <view class="result">结果：{{item.result}}</view>
+                </view>
               </view>
-              <navigator catchtap="tapChat" url="" class="askBtn">问TA</navigator>
-            </view>
-          </block>
+            </block>
+          </view>
+          <!-- 留言记录 -->
+          <view wx:if="{{index===2}}">
+            <block wx:for="{{orderList[2]}}" wx:key="{{item.message_id}}">
+              <view class="item-ans" data-id="{{item.message_id}}">
+                <view class="expertInfo">
+                  <view class="name">姓名：{{item.name}}</view>
+                  <view class="message">留言：{{item.message}}</view>
+                  <view class="reply">答复：{{item.reply || '暂无'}}</view>
+                  <view class="date">留言时间：{{item.date}}</view>
+                </view>
+              </view>
+            </block>
+          </view>
         </view>
         <view class='swiper-bottom'></view>
-        <view class="bottom" hidden="{{hideBottom}}">
-          <view>{{loadMoreData}}</view>
-          <!-- <view>{{refreshTime}}</view> -->
-        </view>
+
       </scroll-view>
     </swiper-item>
   </swiper>

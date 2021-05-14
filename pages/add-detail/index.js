@@ -105,7 +105,7 @@ Page({
   //发布图片
   uploadDIY(filePaths, successUp, failUp, index, length, goods_id) {
     let id = goods_id;
-    let url = 'https://liyan6987.cn/goods/upload_imgs'
+    let url = 'http://1.117.110.210:80/goods/upload_imgs'
     wx.uploadFile({
       url: url,
       filePath: filePaths[index],
@@ -174,12 +174,12 @@ Page({
     let describe = that.data.descripe;
     let goods_type = that.data.type_index
     let header = {
-      'content-type': 'application/x-www-form-urlencoded',
+      'content-type': 'application/json',
       'cookie': wx.getStorageSync("sessionid")//读取cookie
     };
     if (that.data.title && that.data.descripe && that.data.price && that.data.type_index) {
       wx.request({
-        url: 'https://liyan6987.cn/goods/publish_goods',
+        url: 'http://1.117.110.210:80/goods/publish_goods',
         method: 'post',
         header: header,
         data: {

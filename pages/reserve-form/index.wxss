@@ -29,10 +29,16 @@
 .content {
   display: flex;
   margin: 10px 5px;
+  align-items: center;
 }
 
 .content view {
   margin-right: 10px;
 }
 
-.content text {}
+.content text {
+  max-width: 65%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

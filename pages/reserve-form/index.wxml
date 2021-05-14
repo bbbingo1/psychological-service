@@ -7,31 +7,31 @@
 	<view class="teacher-info">
 		<view class="content">
 			<view>姓名：</view>
-			<text class="text-grey">{{'测试'}}</text>
+			<text class="text-grey">{{teacher_info.name}}</text>
 		</view>
 		<view class="content">
 			<view>擅长方向：</view>
-			<text class="text-grey">{{'测试'}}</text>
+			<text class="text-grey">{{teacher_info.direction}}</text>
 		</view>
 		<view class="content">
 			<view>手机号：</view>
-			<text class="text-grey">{{'测试'}}</text>
+			<text class="text-grey">{{teacher_info.phone_number}}</text>
 		</view>
 		<view class="content">
 			<view>值班时间：</view>
-			<text class="text-grey">{{'测试'}}</text>
+			<text class="text-grey">{{teacher_info.duty_time}}</text>
 		</view>
 		<view class="content">
 			<view>咨询室：</view>
-			<text class="text-grey">{{'测试'}}</text>
+			<text class="text-grey">{{teacher_info.room}}</text>
 		</view>
 	</view>
 	<form>
-		<button class="submit-button cu-btn block bg-blue margin-tb-sm lg">提交预约</button>
+		<button class="submit-button cu-btn block bg-blue margin-tb-sm lg" bindtap="reserve">提交预约</button>
 		<view class="cu-form-group align-start">
 			<textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaBInput"
 				placeholder="请输入您的留言信息（非必须）"></textarea>
 		</view>
-		<button class="submit-button cu-btn block bg-blue margin-tb-sm lg">提交留言</button>
+		<button class="submit-button cu-btn block bg-blue margin-tb-sm lg" bindtap="submitMessage">提交留言</button>
 	</form>
 </view>

@@ -1,15 +1,13 @@
 {
   "pages": [
-    "pages/reserve-page/index",
     "pages/test-page/test-page",
+    "pages/reserve-page/index",
     "pages/my/my",
     "pages/order-list/index",
     "pages/goods-detail/index",
-    "pages/logs/logs",
     "pages/slider/index",
     "pages/add-detail/index",
-    "pages/login/index",
-    "components/chat/chat",
+    "pages/user-info/index",
     "pages/test-form/index",
     "pages/test-result/index",
     "pages/reserve-form/index"
