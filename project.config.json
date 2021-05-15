@@ -82,12 +82,6 @@
           "name": "预约",
           "pathName": "pages/reserve-page/index",
           "query": ""
-        },
-        {
-          "id": -1,
-          "name": "添加发布",
-          "pathName": "pages/add-detail/index",
-          "scene": null
         }
       ]
     }
